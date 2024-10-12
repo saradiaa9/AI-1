@@ -13,7 +13,7 @@ public class GenericSearch {
     public String uniformCostSearch(Node initialState,boolean visualize) {
         return"X";
     }    
-    public String iterativeDeepining(Node initialState,boolean visualize){
+    public String iterativeDeepening(Node initialState,boolean visualize){
         return"X";
     }
     public String aStar1Search(Node initialState,boolean visualize) {
