@@ -33,9 +33,9 @@ public class Main {
 
         // Test: Pour from bottle 0 to bottle 2
         System.out.println("Pouring from bottle 0 to bottle 2...");
-        if(node.canPour(0,2)){
+   
         node.pour(0, 2);
-        }
+        
         // Test: Print new state after pour
         System.out.println("State after pouring:");
         printState(node.state);

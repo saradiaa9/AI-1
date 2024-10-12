@@ -88,14 +88,20 @@ public class Node {
     }
     
     public void pour(int from, int to) {
+        // Check if pouring from 'from' bottle to 'to' bottle is allowed
+        if (!canPour(from, to)) {
+            System.out.println("Cannot pour from bottle " + from + " to bottle " + to);
+            return; // Exit if pouring is not allowed
+        }
+    
         // Get a copy of the current state
         ArrayList<String> sourceBottle = state.get(from);
         ArrayList<String> targetBottle = state.get(to);
-        
+    
         // Remove "e" from both bottles
         ArrayList<String> cleanedSource = removeE(sourceBottle);
         ArrayList<String> cleanedTarget = removeE(targetBottle);
-        
+    
         // Get the top color from the source bottle
         String topFrom = cleanedSource.remove(0);  // Remove the top color from source
     
@@ -114,4 +120,5 @@ public class Node {
         state.set(from, cleanedSource);
         state.set(to, cleanedTarget);
     }
+    
 }          
