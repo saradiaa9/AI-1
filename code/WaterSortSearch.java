@@ -12,7 +12,7 @@ public class WaterSortSearch {
     }
 
     // Parse the provided string to create the initial Node state
-    private Node parseInitialState(String initialStateStr) {
+    Node parseInitialState(String initialStateStr) {
         // Split the input string by semicolon
         String[] parts = initialStateStr.split(";");
 

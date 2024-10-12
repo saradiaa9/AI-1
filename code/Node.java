@@ -8,6 +8,7 @@ public class Node {
     public String[] acceptedColors = {"r", "g", "b", "y", "o"};
     public String empty = "e";
     public int pathCost;
+
     
     public Node(Node parent, ArrayList<ArrayList<String>> state, int pathCost) {
         this.parent = parent;

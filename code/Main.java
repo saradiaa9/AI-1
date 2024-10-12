@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main {
+    
     public static void main(String[] args) {
         // Create some initial bottles
         ArrayList<String> bottle1 = new ArrayList<>(Arrays.asList("r", "r", "e", "e"));
@@ -39,7 +40,25 @@ public class Main {
         // Test: Print new state after pour
         System.out.println("State after pouring:");
         printState(node.state);
+        String init = "5;4;b,y,r,b;b,y,r,r;y,r,b,y;e,e,e,e;e,e,e,e;";
+        WaterSortSearch waterSort = new WaterSortSearch();
+        
+        // Testing parseInitialState method
+        Node initialNode = waterSort.parseInitialState(init);
+        // Output the number of bottles and bottle capacity
+  
+        
+        // Output the parsed state to verify correctness
+        System.out.println("Parsed State:");
+        for (ArrayList<String> bottle : initialNode.state) {
+            System.out.println(bottle);
+        }
+       
     }
+
+
+    
+    
 
     // Helper function to print the state of the bottles
     public static void printState(ArrayList<ArrayList<String>> state) {
@@ -47,4 +66,5 @@ public class Main {
             System.out.println(bottle);
         }
     }
+    
 }
