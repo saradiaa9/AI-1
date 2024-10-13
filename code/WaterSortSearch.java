@@ -28,6 +28,7 @@ public class WaterSortSearch {
             String[] colors = parts[i].trim().split(","); // Split by comma
             ArrayList<String> bottleContents = new ArrayList<>(Arrays.asList(colors));
             
+            
            
             state.add(bottleContents);
         }

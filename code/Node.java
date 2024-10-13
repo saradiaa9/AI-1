@@ -10,16 +10,18 @@ public class Node {
     public String empty = "e";
     public Action action;
     public int maxSize;
+    public int pathCost = 0;
 
-    public Node(Node parent, ArrayList<ArrayList<String>> state, Action action, int maxSize) {
+    public Node(Node parent, ArrayList<ArrayList<String>> state, Action action, int maxSize, int pathCost) {
         this.parent = parent;
         this.state = state;
         this.action = action;
         this.maxSize = maxSize;
+        this.pathCost = pathCost;
     }
 
     public Node(ArrayList<ArrayList<String>> state, int maxSize) {
-        this(null, state, null, maxSize);
+        this(null, state, null, maxSize, 0);
     }
 
     public void setAction(Action action) {
@@ -34,10 +36,30 @@ public class Node {
         return parent;
     }
 
-    public boolean isGoal(ArrayList<ArrayList<String>> goal) {
+    // public boolean isGoal() {
+    //     ArrayList<Boolean> goals =  new ArrayList<Boolean>();
+    //     for (ArrayList<String> bottle : state) {
+    //         ArrayList<String> bottleWithoutE = removeE(bottle);
+    //         if (!bottleWithoutE.isEmpty()) {
+    //             String top = bottleWithoutE.get(0);
+    //             for (String color : bottleWithoutE) {
+    //                 if (!color.equals(top)) {
+    //                     return false;
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     return true;
+    // }
+
+    public boolean isGoal() {
+        
         for (ArrayList<String> bottle : state) {
             ArrayList<String> bottleWithoutE = removeE(bottle);
-            if (!bottleWithoutE.isEmpty()) {
+            if (!bottleWithoutE.isEmpty() && bottleWithoutE.size() < maxSize) {
+                return false;
+            }
+            if (!bottleWithoutE.isEmpty() && bottleWithoutE.size() == maxSize) {
                 String top = bottleWithoutE.get(0);
                 for (String color : bottleWithoutE) {
                     if (!color.equals(top)) {
@@ -132,6 +154,9 @@ public class Node {
         ArrayList<String> cleanedSource = removeE(sourceBottle);
         ArrayList<String> cleanedTarget = removeE(targetBottle);
 
+        System.out.println("Source bottle: " + cleanedSource);
+        System.out.println("Target bottle: " + cleanedTarget);
+
         int numberOfTop = 0;
 
         // Get the top color from the source bottle
@@ -150,8 +175,8 @@ public class Node {
         int numbersToAdd = Math.min(possibleColorsToAdd, numberOfTop);
 
         for (int i = 0; i < numbersToAdd; i++) {
-            cleanedSource.remove(i);
-            cleanedTarget.add(topFrom);
+            cleanedSource.remove(0);
+            cleanedTarget.add(0,topFrom);
         }
 
         // Fill the remaining slots with "e" to restore bottle sizes
@@ -166,7 +191,14 @@ public class Node {
         // state.set(from, cleanedSource);
         // state.set(to, cleanedTarget);
 
-        Node newNode = new Node(this, state, new Action(from, to), maxSize);
+        System.out.println("Pouring from bottle " + from + " to bottle " + to);
+        
+        System.out.println(numbersToAdd + " colors added to bottle " + to);
+        
+
+        Node newNode = new Node(this, state, new Action(from, to), maxSize, numbersToAdd + pathCost);
+
+        System.out.println(newNode.pathCost + " path cost");
 
         newNode.state.set(from, cleanedSource);
         newNode.state.set(to, cleanedTarget);

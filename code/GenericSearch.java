@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Queue;
 
 public class GenericSearch {
-    protected int pathCost = 0;
+    
 
     private List<Action> constructSolution(Node node) {
         
@@ -17,8 +17,8 @@ public class GenericSearch {
                 Action action = node.getAction();
                 result.add(action);
                 // System.out.println(problem.stepCost(node.getState(), action));
-                if(node.getParent().getParent() != null)
-                this.pathCost += node.stepCost(action);
+                // if(node.getParent() != null)
+                // pathCost += pathCost + 1;
             }
             node = node.getParent();
             
@@ -39,25 +39,29 @@ public class GenericSearch {
             if (currentNode == null)
                 break;
             nodesExpanded++;
+            System.out.println(currentNode.state.toString());
 
-            if (currentNode.isGoal(currentNode.state)) {
-
+            if (currentNode.isGoal()) {
+                // System.out.println("parent Node :" + currentNode.parent.parent.toString());
                 
-                    // System.out.println(constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") + ";" + pathCost + ";" + nodesExpanded);
-                return (constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") + ";" + pathCost + ";" + nodesExpanded);
+                //  System.out.println(constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") + ";" + currentNode.pathCost + ";" + nodesExpanded);
+                return (constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") + ";" + currentNode.pathCost + ";" + nodesExpanded);
             }
+            
 
             List<Action> actions = currentNode.getActions();
 
             for (Action action : actions) {
 
                 Node child = currentNode.pour(action.getSourceBottleId(), action.getDestinationBottleId());
-
+                
                 if (child != null) {
                     bfsQueue.add(child);
                 }
 
             }
+
+            
 
 
         }
