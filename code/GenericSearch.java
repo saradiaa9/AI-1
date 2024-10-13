@@ -71,16 +71,146 @@ public class GenericSearch {
     }
     
     public String depthFirstSearch(Node initialState, boolean visualize) {
-        return "X";
+        Stack<Node> dfsStack = new Stack<>();
+        Set<ArrayList<ArrayList<String>>> visitedStates = new HashSet<>(); // To track visited states
+        int nodesExpanded = 0;
+    
+        dfsStack.push(initialState);
+        visitedStates.add(initialState.state);
+    
+        while (!dfsStack.isEmpty()) {
+            Node currentNode = dfsStack.pop();
+            if (currentNode == null)
+                break;
+    
+            nodesExpanded++;
+    
+            if (visualize) {
+                System.out.println("Current Node: " + currentNode.state);
+                if (currentNode.parent != null)
+                    System.out.println("Parent Node: " + currentNode.parent.state);
+            }
+    
+            if (currentNode.isGoal()) {
+                return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
+                       + ";" + currentNode.pathCost + ";" + nodesExpanded;
+            }
+    
+            List<Action> actions = currentNode.getActions();
+            Collections.reverse(actions);
+
+            for (Action action : actions) {
+                Node child = currentNode.pour(action.getSourceBottleId(), action.getDestinationBottleId());
+                if(child != null && !visitedStates.contains(child.state)){
+                    dfsStack.push(child);
+                    visitedStates.add(child.state);
+                }
+            }
+        }
+        return "NOSOLUTION";
+    
+            
     }
 
     public String uniformCostSearch(Node initialState, boolean visualize) {
-        return "X";
+        PriorityQueue<Node> ucsQueue = new PriorityQueue<>(new Comparator<Node>() {
+            @Override
+            public int compare(Node n1, Node n2) {
+                return n1.pathCost - n2.pathCost;
+            }
+        });
+        Set<ArrayList<ArrayList<String>>> visitedStates = new HashSet<>(); // To track visited states
+        int nodesExpanded = 0;
+    
+        ucsQueue.add(initialState);
+        visitedStates.add(initialState.state);
+    
+        while (!ucsQueue.isEmpty()) {
+            Node currentNode = ucsQueue.poll();
+            if (currentNode == null)
+                break;
+    
+            nodesExpanded++;
+    
+            if (visualize) {
+                System.out.println("Current Node: " + currentNode.state);
+                if (currentNode.parent != null)
+                    System.out.println("Parent Node: " + currentNode.parent.state);
+            }
+    
+            if (currentNode.isGoal()) {
+                return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
+                       + ";" + currentNode.pathCost + ";" + nodesExpanded;
+            }
+    
+            List<Action> actions = currentNode.getActions();
+    
+            for (Action action : actions) {
+                Node child = currentNode.pour(action.getSourceBottleId(), action.getDestinationBottleId());
+    
+                if (child != null && !visitedStates.contains(child.state)) { // Check if the state has been visited
+                    ucsQueue.add(child);
+                    visitedStates.add(child.state); // Mark this state as visited
+                }
+            }
+        }
+    
+        return "NOSOLUTION";
     }
 
     public String iterativeDeepening(Node initialState, boolean visualize) {
-        return "X";
+        int depth = 0;
+        while (true) {
+            String result = depthLimitedSearch(initialState, depth, visualize);
+            if (!result.equals("CUTOFF")) {
+                return result;
+            }
+            depth++;
+        }
     }
+
+    public String depthLimitedSearch(Node initialState, int depth, boolean visualize) {
+        Stack<Node> dfsStack = new Stack<>();
+        Set<ArrayList<ArrayList<String>>> visitedStates = new HashSet<>(); // To track visited states
+        int nodesExpanded = 0;
+    
+        dfsStack.push(initialState);
+        visitedStates.add(initialState.state);
+    
+        while (!dfsStack.isEmpty()) {
+            Node currentNode = dfsStack.pop();
+            if (currentNode == null)
+                break;
+    
+            nodesExpanded++;
+    
+            if (visualize) {
+                System.out.println("Current Node: " + currentNode.state);
+                if (currentNode.parent != null)
+                    System.out.println("Parent Node: " + currentNode.parent.state);
+            }
+    
+            if (currentNode.isGoal()) {
+                return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
+                       + ";" + currentNode.pathCost + ";" + nodesExpanded;
+            }
+    
+            if (currentNode.depth < depth) {
+                List<Action> actions = currentNode.getActions();
+                Collections.reverse(actions);
+    
+                for (Action action : actions) {
+                    Node child = currentNode.pour(action.getSourceBottleId(), action.getDestinationBottleId());
+                    if(child != null && !visitedStates.contains(child.state)){
+                        dfsStack.push(child);
+                        visitedStates.add(child.state);
+                    }
+                }
+            }
+        }
+        return "CUTOFF";
+    }
+
 
     public String aStar1Search(Node initialState, boolean visualize) {
         return "X";

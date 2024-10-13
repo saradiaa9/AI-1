@@ -12,17 +12,19 @@ public class Node {
     public Action action;
     public int maxSize;
     public int pathCost = 0;
+    public int depth;
 
-    public Node(Node parent, ArrayList<ArrayList<String>> state, Action action, int maxSize, int pathCost) {
+    public Node(Node parent, ArrayList<ArrayList<String>> state, Action action, int maxSize, int pathCost,int depth) {
         this.parent = parent;
         this.state = state;
         this.action = action;
         this.maxSize = maxSize;
         this.pathCost = pathCost;
+        this.depth = depth;
     }
 
     public Node(ArrayList<ArrayList<String>> state, int maxSize) {
-        this(null, state, null, maxSize, 0);
+        this(null, state, null, maxSize, 0,0);
     }
 
     public void setAction(Action action) {
@@ -226,7 +228,7 @@ public class Node {
         newState.set(from, cleanedSource);
         newState.set(to, cleanedTarget);
 
-        Node newNode = new Node(this, newState, new Action(from, to), maxSize, numbersToAdd + pathCost);
+        Node newNode = new Node(this, newState, new Action(from, to), maxSize, numbersToAdd + pathCost,depth+1);
 
         System.out.println(newNode.pathCost + " path cost");
 
