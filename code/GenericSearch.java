@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.*;
 
 public class GenericSearch {
     
@@ -30,47 +31,45 @@ public class GenericSearch {
     public String breadthFirstSearch(Node initialState, boolean visualize) {
 
         Queue<Node> bfsQueue = new LinkedList<>();
+        Set<ArrayList<ArrayList<String>>> visitedStates = new HashSet<>(); // To track visited states
         int nodesExpanded = 0;
-
+    
         bfsQueue.add(initialState);
-
+        visitedStates.add(initialState.state);
+    
         while (!bfsQueue.isEmpty()) {
             Node currentNode = bfsQueue.poll();
             if (currentNode == null)
                 break;
+    
             nodesExpanded++;
-            System.out.println(currentNode.state.toString());
-            if(currentNode.parent != null)
-                System.out.println(currentNode.parent.state.toString());
-
+    
+            if (visualize) {
+                System.out.println("Current Node: " + currentNode.state);
+                if (currentNode.parent != null)
+                    System.out.println("Parent Node: " + currentNode.parent.state);
+            }
+    
             if (currentNode.isGoal()) {
-                // System.out.println("parent Node :" + currentNode.parent.parent.toString());
-                
-                //  System.out.println(constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") + ";" + currentNode.pathCost + ";" + nodesExpanded);
-                return (constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") + ";" + currentNode.pathCost + ";" + nodesExpanded);
+                return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
+                       + ";" + currentNode.pathCost + ";" + nodesExpanded;
             }
-            
-
+    
             List<Action> actions = currentNode.getActions();
-
+    
             for (Action action : actions) {
-
                 Node child = currentNode.pour(action.getSourceBottleId(), action.getDestinationBottleId());
-
-                if (child != null) {
+    
+                if (child != null && !visitedStates.contains(child.state)) { // Check if the state has been visited
                     bfsQueue.add(child);
+                    visitedStates.add(child.state); // Mark this state as visited
                 }
-
             }
-
-            
-
-
         }
-
+    
         return "NOSOLUTION";
     }
-
+    
     public String depthFirstSearch(Node initialState, boolean visualize) {
         return "X";
     }
