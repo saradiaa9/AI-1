@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class WaterSortSearch {
-    private GenericSearch search;
+    private static GenericSearch search = new GenericSearch(); // Initialize here
 
-    // Constructor without initial state
+    // Constructor
     public WaterSortSearch() {
-        this.search = new GenericSearch();
+        // No need to initialize search here since it's already static
     }
 
     // Parse the provided string to create the initial Node state
-    Node parseInitialState(String initialStateStr) {
+    static Node parseInitialState(String initialStateStr) {
         // Split the input string by semicolon
         String[] parts = initialStateStr.split(";");
 
@@ -40,7 +40,7 @@ public class WaterSortSearch {
     }
 
     // Solve method that takes initial state and strategy as parameters
-    public String solve(String initialStateStr, String strategy, boolean visualize) {
+    public static String solve(String initialStateStr, String strategy, boolean visualize) {
         Node initialState = parseInitialState(initialStateStr); // Parse the initial state string
 
         String result = "";

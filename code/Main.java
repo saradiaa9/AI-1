@@ -41,19 +41,15 @@ public class Main {
         System.out.println("State after pouring:");
         printState(node.state);
         String init = "5;4;b,y,r,b;b,y,r,r;y,r,b,y;e,e,e,e;e,e,e,e;";
-        WaterSortSearch waterSort = new WaterSortSearch();
         
-        // Testing parseInitialState method
-        Node initialNode = waterSort.parseInitialState(init);
-        // Output the number of bottles and bottle capacity
-  
+        Node initialNode = WaterSortSearch.parseInitialState(init);
+        
         
         // Output the parsed state to verify correctness
         System.out.println("Parsed State:");
         for (ArrayList<String> bottle : initialNode.state) {
             System.out.println(bottle);
         }
-       
     }
 
 
