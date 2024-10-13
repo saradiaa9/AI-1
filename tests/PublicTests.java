@@ -51,7 +51,8 @@ public class PublicTests {
     public void testa0() throws Exception {
         String solution = WaterSortSearch.solve(grid0, "BF", false);
         solution = solution.replace(" ", "")+";";
-        System.out.println(solution);
+        
+        System.out.println("sara"+solution.toString());
         Checker pc = new Checker(grid0);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid0, solution));
     }

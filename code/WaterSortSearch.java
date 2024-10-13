@@ -28,15 +28,12 @@ public class WaterSortSearch {
             String[] colors = parts[i].trim().split(","); // Split by comma
             ArrayList<String> bottleContents = new ArrayList<>(Arrays.asList(colors));
             
-            // Fill empty slots to the bottle capacity
-            while (bottleContents.size() < bottleCapacity) {
-                bottleContents.add("e"); // Adding "e" for empty slots
-            }
+           
             state.add(bottleContents);
         }
 
         // Return a new Node with the parsed state
-        return new Node(state);
+        return new Node(state, bottleCapacity);
     }
 
     // Solve method that takes initial state and strategy as parameters

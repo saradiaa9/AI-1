@@ -2,6 +2,7 @@ package code;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Main {
     
@@ -18,7 +19,7 @@ public class Main {
         initialState.add(bottle3);
         
         // Initialize Node with this state
-        Node node = new Node(initialState);
+        Node node = new Node(initialState, 4);
         
         // Test: Print initial state
         System.out.println("Initial state:");
@@ -35,12 +36,16 @@ public class Main {
         // Test: Pour from bottle 0 to bottle 2
         System.out.println("Pouring from bottle 0 to bottle 2...");
    
-        node.pour(0, 2);
+        Node newNode = node.pour(2, 0);
         
         // Test: Print new state after pour
         System.out.println("State after pouring:");
-        printState(node.state);
-        String init = "5;4;b,y,r,b;b,y,r,r;y,r,b,y;e,e,e,e;e,e,e,e;";
+        printState(newNode.state);
+        String init = "3;" +
+            "4;" +
+            "r,y,r,y;" +
+            "y,r,y,r;" +
+            "e,e,e,e;";
         
         Node initialNode = WaterSortSearch.parseInitialState(init);
         
@@ -50,6 +55,13 @@ public class Main {
         for (ArrayList<String> bottle : initialNode.state) {
             System.out.println(bottle);
         }
+
+        List<String> sara = new ArrayList<>();
+        sara.add("r");
+        sara.add("r");
+        sara.add("r");
+        sara.add("r");
+        System.out.println(sara.toString().replaceAll("\\[", "").replaceAll("\\]", ""));
     }
 
 
