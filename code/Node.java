@@ -1,5 +1,6 @@
 package code;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,6 +67,7 @@ public class Node {
                         return false;
                     }
                 }
+
             }
         }
         return true;
@@ -108,12 +110,18 @@ public class Node {
         }
         return -1;
     }
+  
+    public boolean isFull(ArrayList<String> bottle) {
+        return bottle.size() == maxSize;
+
+    }
 
     public boolean canPour(int from, int to) {
 
         if (from == to) {
             return false;
         }
+        
 
         String topFrom = getTop(from);
         String topTo = getTop(to);
@@ -124,6 +132,7 @@ public class Node {
         }
 
         // Check if the target bottle is empty or has the same top color as the source
+        
         if (topTo.equals(empty) || topTo.equals(topFrom)) {
             // Check if the target bottle has enough space to accept the liquid
             int emptySlotsInTarget = 0;
@@ -132,6 +141,7 @@ public class Node {
                     emptySlotsInTarget++;
                 }
             }
+            
             // Pour is only possible if the target bottle has space for the topFrom color
             return emptySlotsInTarget > 0;
         }
@@ -145,6 +155,7 @@ public class Node {
             System.out.println("Cannot pour from bottle " + from + " to bottle " + to);
             return null; // Exit if pouring is not allowed
         }
+        
 
         // Get a copy of the current state
         ArrayList<String> sourceBottle = state.get(from);
@@ -153,7 +164,7 @@ public class Node {
         // Remove "e" from both bottles
         ArrayList<String> cleanedSource = removeE(sourceBottle);
         ArrayList<String> cleanedTarget = removeE(targetBottle);
-
+        
         System.out.println("Source bottle: " + cleanedSource);
         System.out.println("Target bottle: " + cleanedTarget);
 
@@ -161,6 +172,7 @@ public class Node {
 
         // Get the top color from the source bottle
         String topFrom = cleanedSource.get(0); // Remove the top color from source
+      
         numberOfTop++;
         for (int i = 1; i < cleanedSource.size(); i++) {
             if (cleanedSource.get(i).equals(topFrom)) {
@@ -173,12 +185,16 @@ public class Node {
         int possibleColorsToAdd = maxSize - cleanedTarget.size();
 
         int numbersToAdd = Math.min(possibleColorsToAdd, numberOfTop);
+ if(isGoal()&&isFull(cleanedSource)&&cleanedTarget.isEmpty()){
+        return null;
 
+    }
         for (int i = 0; i < numbersToAdd; i++) {
             cleanedSource.remove(0);
             cleanedTarget.add(0,topFrom);
         }
-
+        
+   
         // Fill the remaining slots with "e" to restore bottle sizes
         while (cleanedSource.size() < maxSize) {
             cleanedSource.add(0, empty);
@@ -190,6 +206,7 @@ public class Node {
         // // Update the state with the new bottles
         // state.set(from, cleanedSource);
         // state.set(to, cleanedTarget);
+        
 
         System.out.println("Pouring from bottle " + from + " to bottle " + to);
         
