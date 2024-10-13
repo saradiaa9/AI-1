@@ -154,7 +154,7 @@ public class Node {
     public Node pour(int from, int to) {
         // Check if pouring from 'from' bottle to 'to' bottle is allowed
         if (!canPour(from, to)) {
-            System.out.println("Cannot pour from bottle " + from + " to bottle " + to);
+            
             return null; // Exit if pouring is not allowed
         }
         
@@ -178,8 +178,7 @@ public class Node {
         ArrayList<String> cleanedSource = removeE(sourceBottle);
         ArrayList<String> cleanedTarget = removeE(targetBottle);
         
-        System.out.println("Source bottle: " + cleanedSource);
-        System.out.println("Target bottle: " + cleanedTarget);
+      
 
         int numberOfTop = 0;
 
@@ -221,16 +220,14 @@ public class Node {
         // state.set(to, cleanedTarget);
         
 
-        System.out.println("Pouring from bottle " + from + " to bottle " + to);
-
-        System.out.println(numbersToAdd + " colors added to bottle " + to);
+       
 
         newState.set(from, cleanedSource);
         newState.set(to, cleanedTarget);
 
         Node newNode = new Node(this, newState, new Action(from, to), maxSize, numbersToAdd + pathCost,depth+1);
 
-        System.out.println(newNode.pathCost + " path cost");
+      
 
         return newNode;
     }
