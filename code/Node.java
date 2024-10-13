@@ -148,27 +148,43 @@ public class Node {
 
         return false;
     }
+
     public Node pour(int from, int to) {
+        // Check if pouring from 'from' bottle to 'to' bottle is allowed
         if (!canPour(from, to)) {
             System.out.println("Cannot pour from bottle " + from + " to bottle " + to);
-            return null;
+            return null; // Exit if pouring is not allowed
         }
-    
-        // Clone only the affected bottles
-        ArrayList<ArrayList<String>> newState = new ArrayList<>(state); 
-        ArrayList<String> sourceBottle = new ArrayList<>(newState.get(from)); // Copy the source bottle
-        ArrayList<String> targetBottle = new ArrayList<>(newState.get(to));   // Copy the target bottle
-    
+        
+
+        ArrayList<ArrayList<String>> newState = new ArrayList<>();
+
+        for (ArrayList<String> bottle : state) {
+            ArrayList<String> newBottle = new ArrayList<>();
+            for (String color : bottle) {
+                
+                newBottle.add(new String(color));
+            }
+            newState.add(newBottle);
+        }
+
+        // Get a copy of the current state
+        ArrayList<String> sourceBottle = newState.get(from);
+        ArrayList<String> targetBottle = newState.get(to);
+
+        // Remove "e" from both bottles
         ArrayList<String> cleanedSource = removeE(sourceBottle);
         ArrayList<String> cleanedTarget = removeE(targetBottle);
-    
-        if (isGoal() && isFull(cleanedSource) && cleanedTarget.isEmpty()) {
-            return null;
-        }
-    
-        String topFrom = cleanedSource.get(0); 
-        int numberOfTop = 1;
-    
+        
+        System.out.println("Source bottle: " + cleanedSource);
+        System.out.println("Target bottle: " + cleanedTarget);
+
+        int numberOfTop = 0;
+
+        // Get the top color from the source bottle
+        String topFrom = cleanedSource.get(0); // Remove the top color from source
+      
+        numberOfTop++;
         for (int i = 1; i < cleanedSource.size(); i++) {
             if (cleanedSource.get(i).equals(topFrom)) {
                 numberOfTop++;
@@ -176,28 +192,47 @@ public class Node {
                 break;
             }
         }
-    
+
         int possibleColorsToAdd = maxSize - cleanedTarget.size();
+
         int numbersToAdd = Math.min(possibleColorsToAdd, numberOfTop);
-    
+ if(isGoal()&&isFull(cleanedSource)&&cleanedTarget.isEmpty()){
+        return null;
+
+    }
         for (int i = 0; i < numbersToAdd; i++) {
             cleanedSource.remove(0);
             cleanedTarget.add(0, topFrom);
         }
-    
+        
+   
+        // Fill the remaining slots with "e" to restore bottle sizes
         while (cleanedSource.size() < maxSize) {
-            cleanedSource.add(empty);
+            cleanedSource.add(0, empty);
         }
         while (cleanedTarget.size() < maxSize) {
-            cleanedTarget.add(empty);
+            cleanedTarget.add(0, empty);
         }
-    
-        newState.set(from, cleanedSource); 
+
+        // // Update the state with the new bottles
+        // state.set(from, cleanedSource);
+        // state.set(to, cleanedTarget);
+        
+
+        System.out.println("Pouring from bottle " + from + " to bottle " + to);
+
+        System.out.println(numbersToAdd + " colors added to bottle " + to);
+
+        newState.set(from, cleanedSource);
         newState.set(to, cleanedTarget);
-    
-        return new Node(this, newState, new Action(from, to), maxSize, numbersToAdd + pathCost);
+
+        Node newNode = new Node(this, newState, new Action(from, to), maxSize, numbersToAdd + pathCost);
+
+        System.out.println(newNode.pathCost + " path cost");
+
+        return newNode;
     }
-    
+
     public List<Action> getActions() {
         List<Action> actions = new ArrayList<>();
 
