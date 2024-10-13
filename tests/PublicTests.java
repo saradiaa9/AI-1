@@ -136,6 +136,7 @@ assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid1
     public void testc0() throws Exception {
         String solution = WaterSortSearch.solve(grid0, "UC", false);
         solution = solution.replace(" ", "")+";";
+        System.out.println(solution);
         Checker pc = new Checker(grid0);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid0, solution));
     }
@@ -143,6 +144,7 @@ assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid1
     public void testc1() throws Exception {
         String solution = WaterSortSearch.solve(grid1, "UC", false);
         solution = solution.replace(" ", "")+";";
+        System.out.println(solution);
         Checker pc = new Checker(grid1);
 assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid1, solution));
     }
@@ -217,6 +219,7 @@ assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid1
     public void teste0() throws Exception {
         String solution = WaterSortSearch.solve(grid0, "GR1", false);
         solution = solution.replace(" ", "")+";";
+        System.out.println(solution);
         Checker pc = new Checker(grid0);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid0, solution));
     }
@@ -225,6 +228,7 @@ assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid1
     public void teste1() throws Exception {
         String solution = WaterSortSearch.solve(grid1, "GR1", false);
         solution = solution.replace(" ", "")+";";
+        System.out.println(solution);
         Checker pc = new Checker(grid1);
 assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid1, solution));
     }
@@ -266,6 +270,7 @@ assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid1
     public void testf1() throws Exception {
         String solution = WaterSortSearch.solve(grid1, "GR2", false);
         solution = solution.replace(" ", "")+";";
+        System.out.println(solution);
         Checker pc = new Checker(grid1);
 assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid1, solution));
     }

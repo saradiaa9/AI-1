@@ -251,5 +251,17 @@ public class Node {
 
         return actions;
     }
+    public boolean isSorted(ArrayList<String> bottle) {
+       
+        String top = getTop(state.indexOf(bottle));
+
+        for (String color : bottle) {
+            if (!color.equals(top)) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
 
 }

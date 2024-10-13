@@ -1,35 +1,23 @@
 package code;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
 import java.util.*;
 
 public class GenericSearch {
     
-
     private List<Action> constructSolution(Node node) {
-        
         List<Action> result = new ArrayList<>();
         while (node != null){
             if(node.getAction() != null){
                 Action action = node.getAction();
                 result.add(action);
-                // System.out.println(problem.stepCost(node.getState(), action));
-                // if(node.getParent() != null)
-                // pathCost += pathCost + 1;
             }
             node = node.getParent();
-            
         }
         Collections.reverse(result);
         return result;
     }
 
     public String breadthFirstSearch(Node initialState, boolean visualize) {
-
         Queue<Node> bfsQueue = new LinkedList<>();
         Set<ArrayList<ArrayList<String>>> visitedStates = new HashSet<>(); // To track visited states
         int nodesExpanded = 0;
@@ -211,21 +199,235 @@ public class GenericSearch {
         return "CUTOFF";
     }
 
+    public String aStarWithadmissibleHeuristic1(Node initialState, boolean visualize) {
+        PriorityQueue<Node> aStar = new PriorityQueue<>(new Comparator<Node>() {
+            @Override
+            public int compare(Node n1, Node n2) {
+                return (n1.pathCost + heuristic1(n1)) - (n2.pathCost + heuristic1(n2));
+            }
+        });
+        Set<ArrayList<ArrayList<String>>> visitedStates = new HashSet<>(); // To track visited states
+        int nodesExpanded = 0;
 
-    public String aStar1Search(Node initialState, boolean visualize) {
-        return "X";
+        aStar.add(initialState);
+        visitedStates.add(initialState.state);
+
+        while (!aStar.isEmpty()) {
+            Node currentNode = aStar.poll();
+            if (currentNode == null)
+                break;
+
+            nodesExpanded++;
+
+            if (visualize) {
+                System.out.println("Current Node: " + currentNode.state);
+                if (currentNode.parent != null)
+                    System.out.println("Parent Node: " + currentNode.parent.state);
+            }
+
+            if (currentNode.isGoal()) {
+                return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
+                       + ";" + currentNode.pathCost + ";" + nodesExpanded;
+            }
+
+            List<Action> actions = currentNode.getActions();
+
+            for (Action action : actions) {
+                Node child = currentNode.pour(action.getSourceBottleId(), action.getDestinationBottleId());
+
+                if (child != null && !visitedStates.contains(child.state)) { // Check if the state has been visited
+                    aStar.add(child);
+                    visitedStates.add(child.state); // Mark this state as visited
+                }
+            }
+        }
+
+        return "NOSOLUTION";
     }
 
-    public String aStar2Search(Node initialState, boolean visualize) {
-        return "X";
+    public String aStarWithadmissibleHeuristic2(Node initialState, boolean visualize) {
+        PriorityQueue<Node> aStar = new PriorityQueue<>(new Comparator<Node>() {
+            @Override
+            public int compare(Node n1, Node n2) {
+                return (n1.pathCost + heuristic2(n1)) - (n2.pathCost + heuristic2(n2));
+            }
+        });
+        Set<ArrayList<ArrayList<String>>> visitedStates = new HashSet<>(); // To track visited states
+        int nodesExpanded = 0;
+
+        aStar.add(initialState);
+        visitedStates.add(initialState.state);
+
+        while (!aStar.isEmpty()) {
+            Node currentNode = aStar.poll();
+            if (currentNode == null)
+                break;
+
+            nodesExpanded++;
+
+            if (visualize) {
+                System.out.println("Current Node: " + currentNode.state);
+                if (currentNode.parent != null)
+                    System.out.println("Parent Node: " + currentNode.parent.state);
+            }
+
+            if (currentNode.isGoal()) {
+                return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
+                       + ";" + currentNode.pathCost + ";" + nodesExpanded;
+            }
+
+            List<Action> actions = currentNode.getActions();
+
+            for (Action action : actions) {
+                Node child = currentNode.pour(action.getSourceBottleId(), action.getDestinationBottleId());
+
+                if (child != null && !visitedStates.contains(child.state)) { // Check if the state has been visited
+                    aStar.add(child);
+                    visitedStates.add(child.state); // Mark this state as visited
+                }
+            }
+        }
+
+        return "NOSOLUTION";
     }
 
-    public String greedy1Search(Node initialState, boolean visualize) {
-        return "X";
+    public String greedyWithHeuristic1(Node initialState, boolean visualize) {
+        PriorityQueue<Node> greedy= new PriorityQueue<>(new Comparator<Node>() {
+            @Override
+            public int compare(Node n1, Node n2) {
+                return heuristic1(n1) - heuristic1(n2);
+            }
+        });
+        Set<ArrayList<ArrayList<String>>> visitedStates = new HashSet<>(); // To track visited states
+        int nodesExpanded = 0;
+
+        greedy.add(initialState);
+        visitedStates.add(initialState.state);
+
+        while (!greedy.isEmpty()) {
+            Node currentNode = greedy.poll();
+            if (currentNode == null)
+                break;
+
+            nodesExpanded++;
+
+            if (visualize) {
+                System.out.println("Current Node: " + currentNode.state);
+                if (currentNode.parent != null)
+                    System.out.println("Parent Node: " + currentNode.parent.state);
+            }
+
+            if (currentNode.isGoal()) {
+                return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
+                       + ";" + currentNode.pathCost + ";" + nodesExpanded;
+            }
+
+            List<Action> actions = currentNode.getActions();
+
+            for (Action action : actions) {
+                Node child = currentNode.pour(action.getSourceBottleId(), action.getDestinationBottleId());
+
+                if (child != null && !visitedStates.contains(child.state)) { // Check if the state has been visited
+                    greedy.add(child);
+                    visitedStates.add(child.state); // Mark this state as visited
+                }
+            }
+        }
+
+        return "NOSOLUTION";
     }
 
-    public String greedy2Search(Node initialState, boolean visualize) {
-        return "X";
+    public String greedyWithHeuristic2(Node initialState, boolean visualize) {
+        PriorityQueue<Node> greedy= new PriorityQueue<>(new Comparator<Node>() {
+            @Override
+            public int compare(Node n1, Node n2) {
+                return heuristic2(n1) - heuristic2(n2);
+            }
+        });
+        Set<ArrayList<ArrayList<String>>> visitedStates = new HashSet<>(); // To track visited states
+        int nodesExpanded = 0;
+        
+        greedy.add(initialState);
+        visitedStates.add(initialState.state);
+
+        while (!greedy.isEmpty()) {
+            Node currentNode = greedy.poll();
+            if (currentNode == null)
+                break;
+
+            nodesExpanded++;
+
+            if (visualize) {
+                System.out.println("Current Node: " + currentNode.state);
+                if (currentNode.parent != null)
+                    System.out.println("Parent Node: " + currentNode.parent.state);
+            }
+
+            if (currentNode.isGoal()) {
+                return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
+                       + ";" + currentNode.pathCost + ";" + nodesExpanded;
+            }
+
+            List<Action> actions = currentNode.getActions();
+
+            for (Action action : actions) {
+                Node child = currentNode.pour(action.getSourceBottleId(), action.getDestinationBottleId());
+
+                if (child != null && !visitedStates.contains(child.state)) { // Check if the state has been visited
+                    greedy.add(child);
+                    visitedStates.add(child.state); // Mark this state as visited
+                }
+            }
+        }
+
+        return "NOSOLUTION";
     }
 
+   
+    public int heuristic1(Node initialState){
+        int h = 0;
+        for (ArrayList<String> bottle : initialState.state) {
+            ArrayList<String> bottleWithoutE = initialState.removeE(bottle);
+            if (!bottleWithoutE.isEmpty() && bottleWithoutE.size() < initialState.maxSize) {
+                h += 1;
+            }
+            if (!bottleWithoutE.isEmpty() && bottleWithoutE.size() == initialState.maxSize) {
+                String top = bottleWithoutE.get(0);
+                for (String color : bottleWithoutE) {
+                    if (!color.equals(top)) {
+                        h += 1;
+                    }
+                }
+            }
+        }
+        return h;
+    }
+    public int heuristic2(Node initialState) {
+        int h = 0;
+    
+        // Loop through each bottle in the state
+        for (ArrayList<String> bottle : initialState.state) {
+            ArrayList<String> bottleWithoutE = initialState.removeE(bottle);
+    
+            // Count empty bottles
+            if (bottleWithoutE.isEmpty()) {
+                h += 1;
+            } 
+            // For non-empty bottles
+            else if (bottleWithoutE.size() < initialState.maxSize) {
+                h += 1;
+            } 
+            // For full bottles, check if they are sorted
+            else if (bottleWithoutE.size() == initialState.maxSize) {
+                if (!initialState.isSorted(bottle)) {
+                    h += 1; // Add 1 to the heuristic if the bottle isn't sorted
+                }
+            }
+        }
+    
+        // Ensure most filled sorted bottles are considered at the start (additional logic could go here)
+        
+        return h;
+    }
+    
 }

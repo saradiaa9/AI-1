@@ -57,16 +57,16 @@ public class WaterSortSearch {
                 result = search.iterativeDeepening(initialState, visualize);
                 break;
             case "GR1":
-                result = search.greedy1Search(initialState, visualize);
+                result = search.greedyWithHeuristic1(initialState, visualize);
                 break;
             case "GR2":
-                result = search.greedy2Search(initialState, visualize);
+                result = search.greedyWithHeuristic2(initialState, visualize);
                 break;
             case "AS1":
-                result = search.aStar1Search(initialState, visualize);
+                result = search.aStarWithadmissibleHeuristic1(initialState, visualize);
                 break;
             case "AS2":
-                result = search.aStar2Search(initialState, visualize);
+                result = search.aStarWithadmissibleHeuristic2(initialState, visualize);
                 break;
             default:
                 throw new IllegalArgumentException("Unknown strategy: " + strategy);
