@@ -38,23 +38,23 @@ public class Node {
     }
 
     // public boolean isGoal() {
-    //     ArrayList<Boolean> goals =  new ArrayList<Boolean>();
-    //     for (ArrayList<String> bottle : state) {
-    //         ArrayList<String> bottleWithoutE = removeE(bottle);
-    //         if (!bottleWithoutE.isEmpty()) {
-    //             String top = bottleWithoutE.get(0);
-    //             for (String color : bottleWithoutE) {
-    //                 if (!color.equals(top)) {
-    //                     return false;
-    //                 }
-    //             }
-    //         }
-    //     }
-    //     return true;
+    // ArrayList<Boolean> goals = new ArrayList<Boolean>();
+    // for (ArrayList<String> bottle : state) {
+    // ArrayList<String> bottleWithoutE = removeE(bottle);
+    // if (!bottleWithoutE.isEmpty()) {
+    // String top = bottleWithoutE.get(0);
+    // for (String color : bottleWithoutE) {
+    // if (!color.equals(top)) {
+    // return false;
+    // }
+    // }
+    // }
+    // }
+    // return true;
     // }
 
     public boolean isGoal() {
-        
+
         for (ArrayList<String> bottle : state) {
             ArrayList<String> bottleWithoutE = removeE(bottle);
             if (!bottleWithoutE.isEmpty() && bottleWithoutE.size() < maxSize) {
@@ -83,7 +83,7 @@ public class Node {
         return newBottle;
     }
 
-    public int stepCost( Action action) {
+    public int stepCost(Action action) {
         // Define costs based on the action's source and destination
         if (action.getSourceBottleId() == 0 || action.getDestinationBottleId() == 1) {
             return 3; // Cost for specific action
@@ -157,9 +157,20 @@ public class Node {
         }
         
 
+        ArrayList<ArrayList<String>> newState = new ArrayList<>();
+
+        for (ArrayList<String> bottle : state) {
+            ArrayList<String> newBottle = new ArrayList<>();
+            for (String color : bottle) {
+                
+                newBottle.add(new String(color));
+            }
+            newState.add(newBottle);
+        }
+
         // Get a copy of the current state
-        ArrayList<String> sourceBottle = state.get(from);
-        ArrayList<String> targetBottle = state.get(to);
+        ArrayList<String> sourceBottle = newState.get(from);
+        ArrayList<String> targetBottle = newState.get(to);
 
         // Remove "e" from both bottles
         ArrayList<String> cleanedSource = removeE(sourceBottle);
@@ -191,7 +202,7 @@ public class Node {
     }
         for (int i = 0; i < numbersToAdd; i++) {
             cleanedSource.remove(0);
-            cleanedTarget.add(0,topFrom);
+            cleanedTarget.add(0, topFrom);
         }
         
    
@@ -209,23 +220,22 @@ public class Node {
         
 
         System.out.println("Pouring from bottle " + from + " to bottle " + to);
-        
-        System.out.println(numbersToAdd + " colors added to bottle " + to);
-        
 
-        Node newNode = new Node(this, state, new Action(from, to), maxSize, numbersToAdd + pathCost);
+        System.out.println(numbersToAdd + " colors added to bottle " + to);
+
+        newState.set(from, cleanedSource);
+        newState.set(to, cleanedTarget);
+
+        Node newNode = new Node(this, newState, new Action(from, to), maxSize, numbersToAdd + pathCost);
 
         System.out.println(newNode.pathCost + " path cost");
-
-        newNode.state.set(from, cleanedSource);
-        newNode.state.set(to, cleanedTarget);
 
         return newNode;
     }
 
     public List<Action> getActions() {
         List<Action> actions = new ArrayList<>();
-        
+
         for (int i = 0; i < state.size(); i++) {
             for (int j = 0; j < state.size(); j++) {
                 if (i != j) {
@@ -236,7 +246,7 @@ public class Node {
                 }
             }
         }
-        
+
         return actions;
     }
 

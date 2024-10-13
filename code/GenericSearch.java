@@ -40,6 +40,8 @@ public class GenericSearch {
                 break;
             nodesExpanded++;
             System.out.println(currentNode.state.toString());
+            if(currentNode.parent != null)
+                System.out.println(currentNode.parent.state.toString());
 
             if (currentNode.isGoal()) {
                 // System.out.println("parent Node :" + currentNode.parent.parent.toString());
@@ -54,7 +56,7 @@ public class GenericSearch {
             for (Action action : actions) {
 
                 Node child = currentNode.pour(action.getSourceBottleId(), action.getDestinationBottleId());
-                
+
                 if (child != null) {
                     bfsQueue.add(child);
                 }
