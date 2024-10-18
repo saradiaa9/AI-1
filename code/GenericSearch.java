@@ -383,7 +383,7 @@ public class GenericSearch {
         return "NOSOLUTION";
     }
 
-   
+   //bashof el azayez lw msh fadya w msh full hzawed h w lw msh fadya bs full hashof awel lon w azawed h l kol lon mo5talef
     public int heuristic1(Node initialState){
         int h = 0;
         for (ArrayList<String> bottle : initialState.state) {
@@ -402,6 +402,7 @@ public class GenericSearch {
         }
         return h;
     }
+    //ba5od el state el feha azayez mtrateba aktar
     public int heuristic2(Node initialState) {
         int h = 0;
     
