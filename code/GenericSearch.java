@@ -374,7 +374,7 @@ public class GenericSearch {
             // if (!bottleWithoutE.isEmpty() && bottleWithoutE.size() < initialState.maxSize) {
             //     h += 1;
             // }
-            if (!bottleWithoutE.isEmpty() && bottleWithoutE.size() == initialState.maxSize) {
+            if (!bottleWithoutE.isEmpty()) {
                 String top = bottleWithoutE.get(0);
                 for (String color : bottleWithoutE) {
                     if (!color.equals(top)) {
