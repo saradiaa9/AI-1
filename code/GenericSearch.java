@@ -2,7 +2,18 @@ package code;
 
 import java.util.*;
 
+// Import for OperatingSystemMXBean
+import com.sun.management.OperatingSystemMXBean;
+import java.lang.management.ManagementFactory;
 public class GenericSearch {
+    
+public List<Double> memoryUsageHistory = new ArrayList<>();
+public List<Double> cpuUsageHistory = new ArrayList<>();
+private OperatingSystemMXBean osBean = 
+(OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean();
+
+
+
     
     private List<Action> constructSolution(Node node) {
         List<Action> result = new ArrayList<>();
@@ -31,6 +42,7 @@ public class GenericSearch {
                 break;
     
             nodesExpanded++;
+            trackUsage();
     
             if (visualize) {
             currentNode.visualize();
@@ -70,6 +82,7 @@ public class GenericSearch {
                 break;
     
             nodesExpanded++;
+               trackUsage();
     
             if (visualize) {
             currentNode.visualize();
@@ -115,6 +128,7 @@ public class GenericSearch {
                 break;
     
             nodesExpanded++;
+            trackUsage();
     
             if (visualize) {
             currentNode.visualize();
@@ -165,6 +179,7 @@ public class GenericSearch {
                 break;
     
             nodesExpanded++;
+            trackUsage();
     
             if (visualize) {
           currentNode.visualize();
@@ -210,6 +225,7 @@ public class GenericSearch {
                 break;
 
             nodesExpanded++;
+            trackUsage();
 
             if (visualize) {
           currentNode.visualize();
@@ -254,6 +270,7 @@ public class GenericSearch {
                 break;
 
             nodesExpanded++;
+            trackUsage();
 
             if (visualize) {
             currentNode.visualize();
@@ -298,6 +315,7 @@ public class GenericSearch {
                 break;
 
             nodesExpanded++;
+            trackUsage();
 
             if (visualize) {
              currentNode.visualize();
@@ -342,6 +360,7 @@ public class GenericSearch {
                 break;
 
             nodesExpanded++;
+            System.out.print(trackUsage()); 
 
             if (visualize) {
             currentNode.visualize();
@@ -412,6 +431,18 @@ public class GenericSearch {
         // Ensure most filled sorted bottles are considered at the start (additional logic could go here)
         
         return h;
+    }
+    private void trackUsage() {
+        Runtime runtime = Runtime.getRuntime();
+        long usedMemory = runtime.totalMemory() - runtime.freeMemory();
+        double memoryUsedInMB = usedMemory / (1024.0 * 1024.0); // Convert to MB
+        memoryUsageHistory.add(memoryUsedInMB); // Store memory usage
+    
+        // Get CPU load (returns value between 0.0 and 1.0 representing % of CPU)
+        double cpuLoad = osBean.getProcessCpuLoad() * 100; // Convert to percentage
+        cpuUsageHistory.add(cpuLoad); // Store CPU usage
+    
+    
     }
     
 }
