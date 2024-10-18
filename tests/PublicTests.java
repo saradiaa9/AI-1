@@ -69,6 +69,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid0);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid0, solution));
     }
@@ -92,6 +93,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid1);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid1, solution));
     }
@@ -114,6 +116,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid2);
 
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid2, solution));
@@ -137,6 +140,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid3);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid3, solution));
     }
@@ -159,6 +163,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid4);
 
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid4, solution));
@@ -182,6 +187,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid0);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid0, solution));
     }
@@ -204,6 +210,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid1);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid1, solution));
     }
@@ -226,6 +233,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid2);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid2, solution));
     }
@@ -249,6 +257,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid3);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid3, solution));
     }
@@ -271,6 +280,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid4);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid4, solution));
     }
@@ -294,6 +304,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid0);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid0, solution));
     }
@@ -317,6 +328,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid1);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid1, solution));
     }
@@ -340,6 +352,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid2);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid2, solution));
     }
@@ -362,6 +375,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid3);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid3, solution));
     }
@@ -384,6 +398,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid4);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid4, solution));
     }
@@ -406,6 +421,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid0);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid0, solution));
     }
@@ -428,6 +444,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid1);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid1, solution));
     }
@@ -450,6 +467,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid2);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid2, solution));
     }
@@ -472,6 +490,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid3);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid3, solution));
     }
@@ -494,6 +513,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid4);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid4, solution));
     }
@@ -517,6 +537,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid0);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid0, solution));
     }
@@ -540,6 +561,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid1);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid1, solution));
     }
@@ -562,6 +584,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid2);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid2, solution));
     }
@@ -584,6 +607,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid3);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid3, solution));
     }
@@ -606,6 +630,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid4);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid4, solution));
     }
@@ -628,6 +653,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid0);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid0, solution));
     }
@@ -651,6 +677,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid1);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid1, solution));
     }
@@ -673,6 +700,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid2);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid2, solution));
     }
@@ -695,6 +723,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid3);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid3, solution));
     }
@@ -717,6 +746,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid4);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid4, solution));
     }
@@ -739,6 +769,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid0);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid0, solution));
     }
@@ -761,6 +792,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid1);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid1, solution));
     }
@@ -784,6 +816,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid2);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid2, solution));
     }
@@ -806,6 +839,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid3);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid3, solution));
     }
@@ -828,6 +862,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid4);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid4, solution));
     }
@@ -850,6 +885,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid0);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid0, solution));
     }
@@ -872,6 +908,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid1);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid1, solution));
     }
@@ -895,6 +932,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid2);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid2, solution));
     }
@@ -917,6 +955,7 @@ public class PublicTests {
         System.out.println("Memory used (in bytes): " + (usedMemoryAfter - usedMemoryBefore));
          String nodesExpanded = solution.split(";")[2];
         System.out.println("Nodes Expanded: " + nodesExpanded);
+        System.out.println("-----------------");
         Checker pc = new Checker(grid3);
         assertTrue("The output actions do not lead to a goal state.", pc.applyPlan(grid3, solution));
     }

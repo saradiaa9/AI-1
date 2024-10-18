@@ -14,7 +14,7 @@ public class Node {
     public int pathCost = 0;
     public int depth;
 
-    public Node(Node parent, ArrayList<ArrayList<String>> state, Action action, int maxSize, int pathCost,int depth) {
+    public Node(Node parent, ArrayList<ArrayList<String>> state, Action action, int maxSize, int pathCost, int depth) {
         this.parent = parent;
         this.state = state;
         this.action = action;
@@ -24,7 +24,7 @@ public class Node {
     }
 
     public Node(ArrayList<ArrayList<String>> state, int maxSize) {
-        this(null, state, null, maxSize, 0,0);
+        this(null, state, null, maxSize, 0, 0);
     }
 
     public void setAction(Action action) {
@@ -112,7 +112,7 @@ public class Node {
         }
         return -1;
     }
-  
+
     public boolean isFull(ArrayList<String> bottle) {
         return bottle.size() == maxSize;
 
@@ -123,7 +123,6 @@ public class Node {
         if (from == to) {
             return false;
         }
-        
 
         String topFrom = getTop(from);
         String topTo = getTop(to);
@@ -134,7 +133,7 @@ public class Node {
         }
 
         // Check if the target bottle is empty or has the same top color as the source
-        
+
         if (topTo.equals(empty) || topTo.equals(topFrom)) {
             // Check if the target bottle has enough space to accept the liquid
             int emptySlotsInTarget = 0;
@@ -143,7 +142,7 @@ public class Node {
                     emptySlotsInTarget++;
                 }
             }
-            
+
             // Pour is only possible if the target bottle has space for the topFrom color
             return emptySlotsInTarget > 0;
         }
@@ -154,17 +153,16 @@ public class Node {
     public Node pour(int from, int to) {
         // Check if pouring from 'from' bottle to 'to' bottle is allowed
         if (!canPour(from, to)) {
-            
+
             return null; // Exit if pouring is not allowed
         }
-        
 
         ArrayList<ArrayList<String>> newState = new ArrayList<>();
 
         for (ArrayList<String> bottle : state) {
             ArrayList<String> newBottle = new ArrayList<>();
             for (String color : bottle) {
-                
+
                 newBottle.add(new String(color));
             }
             newState.add(newBottle);
@@ -177,14 +175,12 @@ public class Node {
         // Remove "e" from both bottles
         ArrayList<String> cleanedSource = removeE(sourceBottle);
         ArrayList<String> cleanedTarget = removeE(targetBottle);
-        
-      
 
         int numberOfTop = 0;
 
         // Get the top color from the source bottle
         String topFrom = cleanedSource.get(0); // Remove the top color from source
-      
+
         numberOfTop++;
         for (int i = 1; i < cleanedSource.size(); i++) {
             if (cleanedSource.get(i).equals(topFrom)) {
@@ -197,16 +193,15 @@ public class Node {
         int possibleColorsToAdd = maxSize - cleanedTarget.size();
 
         int numbersToAdd = Math.min(possibleColorsToAdd, numberOfTop);
- if(isGoal()&&isFull(cleanedSource)&&cleanedTarget.isEmpty()){
-        return null;
+        if (isGoal() && isFull(cleanedSource) && cleanedTarget.isEmpty()) {
+            return null;
 
-    }
+        }
         for (int i = 0; i < numbersToAdd; i++) {
             cleanedSource.remove(0);
             cleanedTarget.add(0, topFrom);
         }
-        
-   
+
         // Fill the remaining slots with "e" to restore bottle sizes
         while (cleanedSource.size() < maxSize) {
             cleanedSource.add(0, empty);
@@ -218,16 +213,11 @@ public class Node {
         // // Update the state with the new bottles
         // state.set(from, cleanedSource);
         // state.set(to, cleanedTarget);
-        
-
-       
 
         newState.set(from, cleanedSource);
         newState.set(to, cleanedTarget);
 
-        Node newNode = new Node(this, newState, new Action(from, to), maxSize, numbersToAdd + pathCost,depth+1);
-
-      
+        Node newNode = new Node(this, newState, new Action(from, to), maxSize, numbersToAdd + pathCost, depth + 1);
 
         return newNode;
     }
@@ -248,8 +238,9 @@ public class Node {
 
         return actions;
     }
+
     public boolean isSorted(ArrayList<String> bottle) {
-       
+
         String top = getTop(state.indexOf(bottle));
 
         for (String color : bottle) {
@@ -257,7 +248,7 @@ public class Node {
                 return false;
             }
         }
-        
+
         return true;
     }
 
