@@ -13,6 +13,22 @@ private OperatingSystemMXBean osBean =
 (OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean();
 
 
+public static double calculateAverage(List<Double> list) {
+    if (list.isEmpty()) {
+        return 0; // Return 0 or handle the case when the list is empty
+    }
+    
+    double sum = 0;
+    for (Double value : list) {
+        sum += value;
+    }
+    
+    double average = sum / list.size();
+    
+    // Round to 1 decimal place
+    return Math.round(average * 10.0) / 10.0;
+}
+
 
     
     private List<Action> constructSolution(Node node) {
@@ -49,6 +65,10 @@ private OperatingSystemMXBean osBean =
               }
     
             if (currentNode.isGoal()) {
+                double memoryaverage = calculateAverage(memoryUsageHistory);
+                System.out.println("Memory Average: " + memoryaverage);
+                double cpuaverage = calculateAverage(cpuUsageHistory);
+                System.out.println("CPU Average: " + cpuaverage);
                 return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
                        + ";" + currentNode.pathCost + ";" + nodesExpanded;
             }
@@ -89,6 +109,10 @@ private OperatingSystemMXBean osBean =
               }
     
             if (currentNode.isGoal()) {
+                double memoryaverage = calculateAverage(memoryUsageHistory);
+                System.out.println("Memory Average: " + memoryaverage);
+                double cpuaverage = calculateAverage(cpuUsageHistory);
+                System.out.println("CPU Average: " + cpuaverage);
                 return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
                        + ";" + currentNode.pathCost + ";" + nodesExpanded;
             }
@@ -135,6 +159,10 @@ private OperatingSystemMXBean osBean =
               }
     
             if (currentNode.isGoal()) {
+                double memoryaverage = calculateAverage(memoryUsageHistory);
+                System.out.println("Memory Average: " + memoryaverage);
+                double cpuaverage = calculateAverage(cpuUsageHistory);
+                System.out.println("CPU Average: " + cpuaverage);
                 return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
                        + ";" + currentNode.pathCost + ";" + nodesExpanded;
             }
@@ -186,6 +214,10 @@ private OperatingSystemMXBean osBean =
             }
     
             if (currentNode.isGoal()) {
+                double memoryaverage = calculateAverage(memoryUsageHistory);
+                System.out.println("Memory Average: " + memoryaverage);
+                double cpuaverage = calculateAverage(cpuUsageHistory);
+                System.out.println("CPU Average: " + cpuaverage);
                 return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
                        + ";" + currentNode.pathCost + ";" + nodesExpanded;
             }
@@ -232,6 +264,10 @@ private OperatingSystemMXBean osBean =
             }
 
             if (currentNode.isGoal()) {
+                double memoryaverage = calculateAverage(memoryUsageHistory);
+                System.out.println("Memory Average: " + memoryaverage);
+                double cpuaverage = calculateAverage(cpuUsageHistory);
+                System.out.println("CPU Average: " + cpuaverage);
                 return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
                        + ";" + currentNode.pathCost + ";" + nodesExpanded;
             }
@@ -277,6 +313,10 @@ private OperatingSystemMXBean osBean =
               }
 
             if (currentNode.isGoal()) {
+                double memoryaverage = calculateAverage(memoryUsageHistory);
+                System.out.println("Memory Average: " + memoryaverage);
+                double cpuaverage = calculateAverage(cpuUsageHistory);
+                System.out.println("CPU Average: " + cpuaverage);
                 return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
                        + ";" + currentNode.pathCost + ";" + nodesExpanded;
             }
@@ -322,6 +362,10 @@ private OperatingSystemMXBean osBean =
             }
 
             if (currentNode.isGoal()) {
+                double memoryaverage = calculateAverage(memoryUsageHistory);
+                System.out.println("Memory Average: " + memoryaverage);
+                double cpuaverage = calculateAverage(cpuUsageHistory);
+                System.out.println("CPU Average: " + cpuaverage);
                 return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
                        + ";" + currentNode.pathCost + ";" + nodesExpanded;
             }
@@ -360,12 +404,16 @@ private OperatingSystemMXBean osBean =
                 break;
 
             nodesExpanded++;
-            System.out.print(trackUsage()); 
+            trackUsage(); 
 
             if (visualize) {
             currentNode.visualize();
               }
             if (currentNode.isGoal()) {
+                double memoryaverage = calculateAverage(memoryUsageHistory);
+                System.out.println("Memory Average: " + memoryaverage);
+                double cpuaverage = calculateAverage(cpuUsageHistory);
+                System.out.println("CPU Average: " + cpuaverage);
                 return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
                        + ";" + currentNode.pathCost + ";" + nodesExpanded;
             }
