@@ -33,10 +33,8 @@ public class GenericSearch {
             nodesExpanded++;
     
             if (visualize) {
-                System.out.println("Current Node: " + currentNode.state);
-                if (currentNode.parent != null)
-                    System.out.println("Parent Node: " + currentNode.parent.state);
-            }
+            currentNode.visualize();
+              }
     
             if (currentNode.isGoal()) {
                 return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
@@ -74,10 +72,8 @@ public class GenericSearch {
             nodesExpanded++;
     
             if (visualize) {
-                System.out.println("Current Node: " + currentNode.state);
-                if (currentNode.parent != null)
-                    System.out.println("Parent Node: " + currentNode.parent.state);
-            }
+            currentNode.visualize();
+              }
     
             if (currentNode.isGoal()) {
                 return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
@@ -121,10 +117,8 @@ public class GenericSearch {
             nodesExpanded++;
     
             if (visualize) {
-                System.out.println("Current Node: " + currentNode.state);
-                if (currentNode.parent != null)
-                    System.out.println("Parent Node: " + currentNode.parent.state);
-            }
+            currentNode.visualize();
+              }
     
             if (currentNode.isGoal()) {
                 return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
@@ -173,9 +167,7 @@ public class GenericSearch {
             nodesExpanded++;
     
             if (visualize) {
-                System.out.println("Current Node: " + currentNode.state);
-                if (currentNode.parent != null)
-                    System.out.println("Parent Node: " + currentNode.parent.state);
+          currentNode.visualize();
             }
     
             if (currentNode.isGoal()) {
@@ -220,9 +212,7 @@ public class GenericSearch {
             nodesExpanded++;
 
             if (visualize) {
-                System.out.println("Current Node: " + currentNode.state);
-                if (currentNode.parent != null)
-                    System.out.println("Parent Node: " + currentNode.parent.state);
+          currentNode.visualize();
             }
 
             if (currentNode.isGoal()) {
@@ -266,10 +256,8 @@ public class GenericSearch {
             nodesExpanded++;
 
             if (visualize) {
-                System.out.println("Current Node: " + currentNode.state);
-                if (currentNode.parent != null)
-                    System.out.println("Parent Node: " + currentNode.parent.state);
-            }
+            currentNode.visualize();
+              }
 
             if (currentNode.isGoal()) {
                 return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
@@ -312,9 +300,7 @@ public class GenericSearch {
             nodesExpanded++;
 
             if (visualize) {
-                System.out.println("Current Node: " + currentNode.state);
-                if (currentNode.parent != null)
-                    System.out.println("Parent Node: " + currentNode.parent.state);
+             currentNode.visualize();
             }
 
             if (currentNode.isGoal()) {
@@ -358,11 +344,8 @@ public class GenericSearch {
             nodesExpanded++;
 
             if (visualize) {
-                System.out.println("Current Node: " + currentNode.state);
-                if (currentNode.parent != null)
-                    System.out.println("Parent Node: " + currentNode.parent.state);
-            }
-
+            currentNode.visualize();
+              }
             if (currentNode.isGoal()) {
                 return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
                        + ";" + currentNode.pathCost + ";" + nodesExpanded;
