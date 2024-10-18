@@ -388,9 +388,9 @@ public class GenericSearch {
         int h = 0;
         for (ArrayList<String> bottle : initialState.state) {
             ArrayList<String> bottleWithoutE = initialState.removeE(bottle);
-            if (!bottleWithoutE.isEmpty() && bottleWithoutE.size() < initialState.maxSize) {
-                h += 1;
-            }
+            // if (!bottleWithoutE.isEmpty() && bottleWithoutE.size() < initialState.maxSize) {
+            //     h += 1;
+            // }
             if (!bottleWithoutE.isEmpty() && bottleWithoutE.size() == initialState.maxSize) {
                 String top = bottleWithoutE.get(0);
                 for (String color : bottleWithoutE) {
