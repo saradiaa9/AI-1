@@ -56,7 +56,7 @@ public class PublicTests {
         long usedMemoryBefore = runtime.totalMemory() - runtime.freeMemory();
         System.out.println("Used Memory before: " + usedMemoryBefore);
 
-        String solution = WaterSortSearch.solve(grid0, "BF", true);
+        String solution = WaterSortSearch.solve(grid0, "BF", false);
         solution = solution.replace(" ", "") + ";";
     
         long usedMemoryAfter = runtime.totalMemory() - runtime.freeMemory();
