@@ -251,5 +251,60 @@ public class Node {
 
         return true;
     }
+    
+        public  void visualize() {
+            System.out.println("Current State of Bottles:");
+            // Print the contents of each bottle
+            for (int i = 0; i < state.size(); i++) {
+                System.out.print("Bottle " + i + ": ");
+                ArrayList<String> bottle = state.get(i);
+                for (String color : bottle) {
+                    System.out.print(color + " ");
+                }
+                System.out.println();
+            }
+            System.out.println();
+        
+            // Visualize the pouring actions as a stack
+            if (action != null) {
+                System.out.println("Pouring from Bottle " + action.getSourceBottleId() +
+                                   " to Bottle " + action.getDestinationBottleId() + ":");
+                
+                // Get the source and destination bottles
+                ArrayList<String> sourceBottle = state.get(action.getSourceBottleId());
+                ArrayList<String> destinationBottle = state.get(action.getDestinationBottleId());
+        
+                // Display the pouring process
+                String colorToPour = sourceBottle.get(0); // Assume the top color to pour
+                System.out.println("Pouring color: " + colorToPour);
+        
+                // Simulate the pour by modifying the state for visualization
+                // Create temporary copies of the bottles to show the state change
+                ArrayList<String> tempSource = new ArrayList<>(sourceBottle);
+                ArrayList<String> tempDestination = new ArrayList<>(destinationBottle);
+        
+                // Remove the color from the source bottle
+                tempSource.remove(0);
+                // Add the color to the destination bottle
+                tempDestination.add(0, colorToPour);
+        
+                // Print the updated states
+                System.out.println("Updated State After Pour:");
+                System.out.print("Source Bottle After Pour: ");
+                for (String color : tempSource) {
+                    System.out.print(color + " ");
+                }
+                System.out.println();
+        
+                System.out.print("Destination Bottle After Pour: ");
+                for (String color : tempDestination) {
+                    System.out.print(color + " ");
+                }
+                System.out.println();
+            } else {
+                System.out.println("No action to visualize.");
+            }
+        }
+    }
+        
 
-}
