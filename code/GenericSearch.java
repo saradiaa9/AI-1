@@ -2,16 +2,9 @@ package code;
 
 import java.util.*;
 
-// Import for OperatingSystemMXBean
-import com.sun.management.OperatingSystemMXBean;
-import java.lang.management.ManagementFactory;
+
 public class GenericSearch {
     
-public List<Double> memoryUsageHistory = new ArrayList<>();
-public List<Double> cpuUsageHistory = new ArrayList<>();
-private OperatingSystemMXBean osBean = 
-(OperatingSystemMXBean) ManagementFactory.getOperatingSystemMXBean();
-
 
 public static double calculateAverage(List<Double> list) {
     if (list.isEmpty()) {
@@ -58,17 +51,14 @@ public static double calculateAverage(List<Double> list) {
                 break;
     
             nodesExpanded++;
-            trackUsage();
+       
     
             if (visualize) {
             currentNode.visualize();
               }
     
             if (currentNode.isGoal()) {
-                double memoryaverage = calculateAverage(memoryUsageHistory);
-                System.out.println("Memory Average: " + memoryaverage);
-                double cpuaverage = calculateAverage(cpuUsageHistory);
-                System.out.println("CPU Average: " + cpuaverage);
+             
                 return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
                        + ";" + currentNode.pathCost + ";" + nodesExpanded;
             }
@@ -102,17 +92,14 @@ public static double calculateAverage(List<Double> list) {
                 break;
     
             nodesExpanded++;
-               trackUsage();
+             
     
             if (visualize) {
             currentNode.visualize();
               }
     
             if (currentNode.isGoal()) {
-                double memoryaverage = calculateAverage(memoryUsageHistory);
-                System.out.println("Memory Average: " + memoryaverage);
-                double cpuaverage = calculateAverage(cpuUsageHistory);
-                System.out.println("CPU Average: " + cpuaverage);
+          
                 return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
                        + ";" + currentNode.pathCost + ";" + nodesExpanded;
             }
@@ -152,17 +139,14 @@ public static double calculateAverage(List<Double> list) {
                 break;
     
             nodesExpanded++;
-            trackUsage();
+        
     
             if (visualize) {
             currentNode.visualize();
               }
     
             if (currentNode.isGoal()) {
-                double memoryaverage = calculateAverage(memoryUsageHistory);
-                System.out.println("Memory Average: " + memoryaverage);
-                double cpuaverage = calculateAverage(cpuUsageHistory);
-                System.out.println("CPU Average: " + cpuaverage);
+        
                 return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
                        + ";" + currentNode.pathCost + ";" + nodesExpanded;
             }
@@ -207,17 +191,14 @@ public static double calculateAverage(List<Double> list) {
                 break;
     
             nodesExpanded++;
-            trackUsage();
+          
     
             if (visualize) {
           currentNode.visualize();
             }
     
             if (currentNode.isGoal()) {
-                double memoryaverage = calculateAverage(memoryUsageHistory);
-                System.out.println("Memory Average: " + memoryaverage);
-                double cpuaverage = calculateAverage(cpuUsageHistory);
-                System.out.println("CPU Average: " + cpuaverage);
+         
                 return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
                        + ";" + currentNode.pathCost + ";" + nodesExpanded;
             }
@@ -257,17 +238,14 @@ public static double calculateAverage(List<Double> list) {
                 break;
 
             nodesExpanded++;
-            trackUsage();
+            
 
             if (visualize) {
           currentNode.visualize();
             }
 
             if (currentNode.isGoal()) {
-                double memoryaverage = calculateAverage(memoryUsageHistory);
-                System.out.println("Memory Average: " + memoryaverage);
-                double cpuaverage = calculateAverage(cpuUsageHistory);
-                System.out.println("CPU Average: " + cpuaverage);
+       
                 return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
                        + ";" + currentNode.pathCost + ";" + nodesExpanded;
             }
@@ -306,17 +284,13 @@ public static double calculateAverage(List<Double> list) {
                 break;
 
             nodesExpanded++;
-            trackUsage();
-
+            
             if (visualize) {
             currentNode.visualize();
               }
 
             if (currentNode.isGoal()) {
-                double memoryaverage = calculateAverage(memoryUsageHistory);
-                System.out.println("Memory Average: " + memoryaverage);
-                double cpuaverage = calculateAverage(cpuUsageHistory);
-                System.out.println("CPU Average: " + cpuaverage);
+          
                 return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
                        + ";" + currentNode.pathCost + ";" + nodesExpanded;
             }
@@ -355,17 +329,14 @@ public static double calculateAverage(List<Double> list) {
                 break;
 
             nodesExpanded++;
-            trackUsage();
+           
 
             if (visualize) {
              currentNode.visualize();
             }
 
             if (currentNode.isGoal()) {
-                double memoryaverage = calculateAverage(memoryUsageHistory);
-                System.out.println("Memory Average: " + memoryaverage);
-                double cpuaverage = calculateAverage(cpuUsageHistory);
-                System.out.println("CPU Average: " + cpuaverage);
+               
                 return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
                        + ";" + currentNode.pathCost + ";" + nodesExpanded;
             }
@@ -404,16 +375,13 @@ public static double calculateAverage(List<Double> list) {
                 break;
 
             nodesExpanded++;
-            trackUsage(); 
+           
 
             if (visualize) {
             currentNode.visualize();
               }
             if (currentNode.isGoal()) {
-                double memoryaverage = calculateAverage(memoryUsageHistory);
-                System.out.println("Memory Average: " + memoryaverage);
-                double cpuaverage = calculateAverage(cpuUsageHistory);
-                System.out.println("CPU Average: " + cpuaverage);
+              
                 return constructSolution(currentNode).toString().replaceAll("\\[", "").replaceAll("\\]", "") 
                        + ";" + currentNode.pathCost + ";" + nodesExpanded;
             }
@@ -480,17 +448,6 @@ public static double calculateAverage(List<Double> list) {
         
         return h;
     }
-    private void trackUsage() {
-        Runtime runtime = Runtime.getRuntime();
-        long usedMemory = runtime.totalMemory() - runtime.freeMemory();
-        double memoryUsedInMB = usedMemory / (1024.0 * 1024.0); // Convert to MB
-        memoryUsageHistory.add(memoryUsedInMB); // Store memory usage
     
-        // Get CPU load (returns value between 0.0 and 1.0 representing % of CPU)
-        double cpuLoad = osBean.getProcessCpuLoad() * 100; // Convert to percentage
-        cpuUsageHistory.add(cpuLoad); // Store CPU usage
-    
-    
-    }
     
 }
