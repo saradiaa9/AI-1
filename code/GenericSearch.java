@@ -158,7 +158,7 @@ private OperatingSystemMXBean osBean =
         int depth = 0;
         while (true) {
             String result = depthLimitedSearch(initialState, depth, visualize);
-            if (!result.equals("CUTOFF")) {
+            if (!result.equals("NOSOLUTION")) {
                 return result;
             }
             depth++;
@@ -203,7 +203,7 @@ private OperatingSystemMXBean osBean =
                 }
             }
         }
-        return "CUTOFF";
+        return "NOSOLUTION";
     }
 
     public String aStarWithadmissibleHeuristic1(Node initialState, boolean visualize) {
